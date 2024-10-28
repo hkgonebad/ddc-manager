@@ -1,37 +1,37 @@
-import React from "react";
-import NavLinks from "./NavLinks";
+import React from "react"
 
-import { cn } from "@/lib/utils";
-import ModeToggle from '../todo/components/ToggleDarkMode'
-import { Button } from "@/components/ui/button";
-import SignOut from "./SignOut";
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
+
+import NavLinks from "./NavLinks"
+import SignOut from "./SignOut"
+
 export default function SideNav() {
-	return (
-		<SideBar className=" hidden lg:block dark:bg-gradient-dark flex-1" />
-	);
+  return <SideBar className=" dark:bg-gradient-dark hidden flex-1 lg:block" />
 }
 
 export const SideBar = ({ className }: { className?: string }) => {
-	return (
-		<div className={className}>
-			<div
-				className={cn(
-					"h-full w-full lg:w-96 lg:p-10 space-y-5 lg:border-r flex flex-col "
-				)}
-			>
-				<div className="flex-1 space-y-5">
-					<div className="flex items-center gap-2 flex-1">
-						<h1 className="text-3xl font-bold">Onyx Dash</h1>
+  return (
+    <div className={className}>
+      <div
+        className={cn(
+          "lg:w-75 flex size-full flex-col space-y-5 lg:border-r lg:p-6"
+        )}
+      >
+        <div className="flex-1 space-y-5">
+          <div className="flex flex-1 items-center gap-2">
+            <h1 className="text-3xl font-bold">Dashboard</h1>
+            <ThemeToggle />
+          </div>
 
-						<ThemeToggle />
-					</div>
-					<NavLinks />
-				</div>
-				<div className="">
-					<SignOut />
-				</div>
-			</div>
-		</div>
-	);
-};
+          <NavLinks />
+        </div>
+
+        <div className="">
+          <SignOut />
+        </div>
+      </div>
+    </div>
+  )
+}

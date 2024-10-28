@@ -1,30 +1,20 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "Onyx",
-  description:
-    "Embedded systems",
+  name: "DDC Manager",
+  description: "A Project mangement tool for DDC",
   mainNav: [
     {
       title: "Home",
       href: "/",
     },
-
-    { 
-      title: "Account",
-      href: "/account",
-    },
-    { 
+    {
       title: "Dashboard",
       href: "/dashboard",
     },
-    { 
-      title: "OpenAI",
+    {
+      title: "Reports",
       href: "/playground",
-    },
-    { 
-      title: "RBAC",
-      href: "/dashboard/members",
     },
     {
       title: "Contact",
@@ -32,9 +22,9 @@ export const siteConfig = {
     },
   ],
   links: {
-    twitter: "https://twitter.com/r_mourey_jr",
-    github: "https://github.com/rmourey26/onyx",
-    login: "https://onyx-rho-pink.vercel.app/auth",
-    signup: "https://onyx-rho-pink.vercel.app/onboarding",
+    twitter: "https://twitter.com/hkgonebad",
+    github: "https://github.com/hkgonebad",
+    login: "/auth",
+    signup: "/onboarding",
   },
 }

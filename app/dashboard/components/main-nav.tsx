@@ -24,7 +24,7 @@ export function MainNav({
         Customers
       </Link>
       <Link
-       href="#"
+        href="#"
         className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
       >
         Products

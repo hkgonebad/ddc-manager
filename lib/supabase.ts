@@ -98,24 +98,24 @@ export type Database = {
           },
         ]
       }
-      members_table: {
+      users: {
         Row: {
-          created_at: string
-          id: number
-          member_id: string
+          id: string // Replace with actual data types
           name: string | null
+          email: string | null
+          auth_user_id: string // Ensure this matches your column
+          // Add other columns as needed
         }
         Insert: {
-          created_at?: string
-          id: number
-          member_id: string
           name?: string | null
+          email?: string | null
+          auth_user_id: string
+          // Add other columns for insert operations
         }
         Update: {
-          created_at?: string
-          id?: number
-          member_id?: string
           name?: string | null
+          email?: string | null
+          // Add other columns for update operations
         }
         Relationships: []
       }
