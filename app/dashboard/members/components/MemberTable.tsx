@@ -1,6 +1,6 @@
 import React from "react"
 
-import Table from "@/components/ui/Table"
+import Table from "@/app/dashboard/members/components/Table"
 
 import ListOfMembers from "./ListOfMembers"
 

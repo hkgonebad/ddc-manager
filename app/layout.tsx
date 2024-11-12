@@ -90,7 +90,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <SpeedInsights /> */}
               </div>
 
-              <SiteFooter />
+              {/* <SiteFooter /> */}
             </div>
           </ThemeProvider>
         </body>

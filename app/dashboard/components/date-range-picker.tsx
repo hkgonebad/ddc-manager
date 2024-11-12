@@ -14,16 +14,32 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
+interface CalendarDateRangePickerProps {
+  onSelect: (dateRange: DateRange | undefined) => void
+  defaultDateRange?: DateRange
+}
+
 export function CalendarDateRangePicker({
-  className,
-}: React.HTMLAttributes<HTMLDivElement>) {
-  const [date, setDate] = React.useState<DateRange | undefined>({
-    from: new Date(2023, 0, 20),
-    to: addDays(new Date(2023, 0, 20), 20),
-  })
+  onSelect,
+  defaultDateRange,
+}: CalendarDateRangePickerProps) {
+  // const today = new Date() // Get today's date
+  // const initialDateRange: DateRange = { from: today, to: today } // Default to today
+
+  // const [date, setDate] = React.useState<DateRange | undefined>(
+  //   initialDateRange
+  // )
+
+  const [date, setDate] = React.useState<DateRange | undefined>(
+    defaultDateRange
+  )
+
+  React.useEffect(() => {
+    onSelect(date)
+  }, [date, onSelect])
 
   return (
-    <div className={cn("grid gap-2", className)}>
+    <div className={cn("grid gap-2")}>
       <Popover>
         <PopoverTrigger asChild>
           <Button
@@ -34,7 +50,7 @@ export function CalendarDateRangePicker({
               !date && "text-muted-foreground"
             )}
           >
-            <CalendarIcon className="mr-2 h-4 w-4" />
+            <CalendarIcon className="mr-2 size-4" />
             {date?.from ? (
               date.to ? (
                 <>
@@ -55,7 +71,10 @@ export function CalendarDateRangePicker({
             mode="range"
             defaultMonth={date?.from}
             selected={date}
-            onSelect={setDate}
+            onSelect={(range) => {
+              setDate(range)
+              onSelect(range)
+            }}
             numberOfMonths={2}
           />
         </PopoverContent>

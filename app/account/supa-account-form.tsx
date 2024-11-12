@@ -7,6 +7,7 @@ import { type User } from "@supabase/supabase-js"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 
+import SignOut from "../dashboard/components/SignOut"
 import Avatar from "./avatar"
 
 export default function AccountForm({ user }: { user: User | null }) {
@@ -81,7 +82,7 @@ export default function AccountForm({ user }: { user: User | null }) {
   }
 
   return (
-    <div className="w-full space-y-8 px-2 py-8">
+    <div className="w-full space-y-8 ">
       <Avatar
         uid={user?.id ?? null}
         url={avatar_url}
@@ -137,18 +138,7 @@ export default function AccountForm({ user }: { user: User | null }) {
       </div>
 
       <div className="mb-2 flex w-full flex-col">
-        <form
-          className="items-center space-y-8"
-          action="/auth/signout"
-          method="post"
-        >
-          <button
-            className={buttonVariants({ variant: "outline" })}
-            type="submit"
-          >
-            Sign out
-          </button>
-        </form>
+        <SignOut />
       </div>
     </div>
   )

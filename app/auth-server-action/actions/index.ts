@@ -22,10 +22,10 @@ export async function signUpWithEmailAndPassword(data: {
     return { error: error.message }
   }
 
-  // Insert user with auth_user_id but without a role.
-  const { error: dbError } = await supabase.from("users").insert([
+  // Insert user with id but without a role.
+  const { error: dbError } = await supabase.from("employees").insert([
     {
-      auth_user_id: authUser.user?.id,
+      id: authUser.user?.id,
       email: data.email,
       role: null, // Role will be assigned later by an admin
     },

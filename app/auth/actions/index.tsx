@@ -32,9 +32,9 @@ export async function loginWithEmailAndPassword(data: {
 
   // Fetch user information after sign-in
   const { data: userData, error: userError } = await supabase
-    .from("users")
+    .from("employees")
     .select("*")
-    .eq("auth_user_id", session.user.id) // Assuming `id` is the user's UUID
+    .eq("id", session.user.id)
 
   // Log the raw userData for debugging
   console.log("User Data Returned:", userData)

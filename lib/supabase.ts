@@ -9,316 +9,193 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      countries: {
+      clients: {
         Row: {
-          continent: Database["public"]["Enums"]["continents"] | null
-          id: number
-          iso2: string
-          iso3: string | null
-          local_name: string | null
+          created_at: string | null
+          email: string | null
+          id: string
           name: string | null
+          organization: string | null
+          phone: string | null
+          project_id: string | null
+          status: string | null
         }
         Insert: {
-          continent?: Database["public"]["Enums"]["continents"] | null
-          id?: number
-          iso2: string
-          iso3?: string | null
-          local_name?: string | null
+          created_at?: string | null
+          email?: string | null
+          id?: string
           name?: string | null
+          organization?: string | null
+          phone?: string | null
+          project_id?: string | null
+          status?: string | null
         }
         Update: {
-          continent?: Database["public"]["Enums"]["continents"] | null
-          id?: number
-          iso2?: string
-          iso3?: string | null
-          local_name?: string | null
+          created_at?: string | null
+          email?: string | null
+          id?: string
           name?: string | null
+          organization?: string | null
+          phone?: string | null
+          project_id?: string | null
+          status?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "clients_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
       }
-      gpt_one: {
+      employees: {
         Row: {
-          created_at: string
+          avatar_url: string | null
+          created_at: string | null
+          designation: string | null
           email: string
           id: string
-          messages: string | null
-          user_input: string | null
-          vector_one: string | null
+          name: string | null
+          role: string | null
+          status: string | null
+          team: string | null
+          updated_at: string | null
         }
         Insert: {
-          created_at?: string
-          email?: string
-          id?: string
-          messages?: string | null
-          user_input?: string | null
-          vector_one?: string | null
+          avatar_url?: string | null
+          created_at?: string | null
+          designation?: string | null
+          email: string
+          id: string
+          name?: string | null
+          role?: string | null
+          status?: string | null
+          team?: string | null
+          updated_at?: string | null
         }
         Update: {
-          created_at?: string
+          avatar_url?: string | null
+          created_at?: string | null
+          designation?: string | null
           email?: string
           id?: string
-          messages?: string | null
-          user_input?: string | null
-          vector_one?: string | null
+          name?: string | null
+          role?: string | null
+          status?: string | null
+          team?: string | null
+          updated_at?: string | null
         }
         Relationships: []
       }
-      inqueries: {
+      notifications: {
         Row: {
-          created_at: string
-          email: string
+          created_at: string | null
+          emp_id: string
           id: number
+          is_read: boolean | null
           message: string
+        }
+        Insert: {
+          created_at?: string | null
+          emp_id: string
+          id?: number
+          is_read?: boolean | null
+          message: string
+        }
+        Update: {
+          created_at?: string | null
+          emp_id?: string
+          id?: number
+          is_read?: boolean | null
+          message?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "notifications_user_id_fkey"
+            columns: ["emp_id"]
+            isOneToOne: true
+            referencedRelation: "employees"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      projects: {
+        Row: {
+          client: string
+          created_at: string | null
+          deadline: string
+          departments: Json | null
+          id: string
+          manager_id: number
           name: string
           user_id: string
         }
         Insert: {
-          created_at?: string
-          email?: string
-          id?: number
-          message: string
-          name?: string
-          user_id?: string
+          client: string
+          created_at?: string | null
+          deadline: string
+          departments?: Json | null
+          id: string
+          manager_id: number
+          name: string
+          user_id: string
         }
         Update: {
-          created_at?: string
-          email?: string
-          id?: number
-          message?: string
+          client?: string
+          created_at?: string | null
+          deadline?: string
+          departments?: Json | null
+          id?: string
+          manager_id?: number
           name?: string
           user_id?: string
         }
         Relationships: [
           {
-            foreignKeyName: "public_inqueries_user_id_fkey"
+            foreignKeyName: "projects_user_id_fkey"
             columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: "users"
+            referencedRelation: "employees"
             referencedColumns: ["id"]
           },
         ]
       }
-      users: {
+      tasks: {
         Row: {
-          id: string // Replace with actual data types
-          name: string | null
-          email: string | null
-          auth_user_id: string // Ensure this matches your column
-          // Add other columns as needed
-        }
-        Insert: {
-          name?: string | null
-          email?: string | null
-          auth_user_id: string
-          // Add other columns for insert operations
-        }
-        Update: {
-          name?: string | null
-          email?: string | null
-          // Add other columns for update operations
-        }
-        Relationships: []
-      }
-      moralis_users: {
-        Row: {
-          created_at: string
+          end_date: string | null
           id: string
-          metadata: Json | null
-          moralis_provider: string | null
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-          metadata?: Json | null
-          moralis_provider?: string | null
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          metadata?: Json | null
-          moralis_provider?: string | null
-        }
-        Relationships: []
-      }
-      nods_page: {
-        Row: {
-          checksum: string | null
-          id: number
-          meta: Json | null
-          parent_page_id: number | null
-          path: string
-          source: string | null
-          type: string | null
-        }
-        Insert: {
-          checksum?: string | null
-          id?: number
-          meta?: Json | null
-          parent_page_id?: number | null
-          path: string
-          source?: string | null
-          type?: string | null
-        }
-        Update: {
-          checksum?: string | null
-          id?: number
-          meta?: Json | null
-          parent_page_id?: number | null
-          path?: string
-          source?: string | null
-          type?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "nods_page_parent_page_id_fkey"
-            columns: ["parent_page_id"]
-            isOneToOne: false
-            referencedRelation: "nods_page"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      nods_page_section: {
-        Row: {
-          content: string | null
-          embedding: string | null
-          heading: string | null
-          id: number
-          page_id: number
-          slug: string | null
-          token_count: number | null
-        }
-        Insert: {
-          content?: string | null
-          embedding?: string | null
-          heading?: string | null
-          id?: number
-          page_id: number
-          slug?: string | null
-          token_count?: number | null
-        }
-        Update: {
-          content?: string | null
-          embedding?: string | null
-          heading?: string | null
-          id?: number
-          page_id?: number
-          slug?: string | null
-          token_count?: number | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "nods_page_section_page_id_fkey"
-            columns: ["page_id"]
-            isOneToOne: false
-            referencedRelation: "nods_page"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      permission_table: {
-        Row: {
-          created_at: string
-          id: number
-          member_id: string
-          role: string
+          project_id: string
+          resource_name: string
+          start_date: string
           status: string
+          task_name: string
         }
         Insert: {
-          created_at?: string
-          id?: number
-          member_id: string
-          role: string
+          end_date?: string | null
+          id: string
+          project_id: string
+          resource_name: string
+          start_date: string
           status: string
+          task_name: string
         }
         Update: {
-          created_at?: string
-          id?: number
-          member_id?: string
-          role?: string
+          end_date?: string | null
+          id?: string
+          project_id?: string
+          resource_name?: string
+          start_date?: string
           status?: string
-        }
-        Relationships: []
-      }
-      profiles: {
-        Row: {
-          avatar_url: string | null
-          email: string | null
-          full_name: string | null
-          id: string
-          updated_at: string | null
-          username: string | null
-          website: string | null
-        }
-        Insert: {
-          avatar_url?: string | null
-          email?: string | null
-          full_name?: string | null
-          id?: string
-          updated_at?: string | null
-          username?: string | null
-          website?: string | null
-        }
-        Update: {
-          avatar_url?: string | null
-          email?: string | null
-          full_name?: string | null
-          id?: string
-          updated_at?: string | null
-          username?: string | null
-          website?: string | null
+          task_name?: string
         }
         Relationships: [
           {
-            foreignKeyName: "profiles_id_fkey"
-            columns: ["id"]
+            foreignKeyName: "tasks_project_id_fkey"
+            columns: ["project_id"]
             isOneToOne: true
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      todos: {
-        Row: {
-          created_at: string
-          created_by: string
-          id: number
-          is_complete: boolean | null
-          task: string | null
-          title: string
-          user_id: string
-        }
-        Insert: {
-          created_at: string
-          created_by: string
-          id?: number
-          is_complete?: boolean | null
-          task?: string | null
-          title?: string
-          user_id: string
-        }
-        Update: {
-          created_at?: string
-          created_by?: string
-          id?: number
-          is_complete?: boolean | null
-          task?: string | null
-          title?: string
-          user_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "todos_created_by_fkey"
-            columns: ["created_by"]
-            isOneToOne: false
-            referencedRelation: "members_table"
-            referencedColumns: ["member_id"]
-          },
-          {
-            foreignKeyName: "todos_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "users"
+            referencedRelation: "projects"
             referencedColumns: ["id"]
           },
         ]
@@ -328,91 +205,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      get_page_parents: {
-        Args: {
-          page_id: number
-        }
-        Returns: {
-          id: number
-          parent_page_id: number
-          path: string
-          meta: Json
-        }[]
-      }
-      hnswhandler: {
-        Args: {
-          "": unknown
-        }
-        Returns: unknown
-      }
-      ivfflathandler: {
-        Args: {
-          "": unknown
-        }
-        Returns: unknown
-      }
-      match_page_sections: {
-        Args: {
-          embedding: string
-          match_threshold: number
-          match_count: number
-          min_content_length: number
-        }
-        Returns: {
-          id: number
-          page_id: number
-          slug: string
-          heading: string
-          content: string
-          similarity: number
-        }[]
-      }
-      vector_avg: {
-        Args: {
-          "": number[]
-        }
-        Returns: string
-      }
-      vector_dims: {
-        Args: {
-          "": string
-        }
-        Returns: number
-      }
-      vector_norm: {
-        Args: {
-          "": string
-        }
-        Returns: number
-      }
-      vector_out: {
-        Args: {
-          "": string
-        }
-        Returns: unknown
-      }
-      vector_send: {
-        Args: {
-          "": string
-        }
-        Returns: string
-      }
-      vector_typmod_in: {
-        Args: {
-          "": unknown[]
-        }
-        Returns: number
-      }
+      [_ in never]: never
     }
     Enums: {
-      continents:
-        | "Africa"
-        | "Antarctica"
-        | "Asia"
-        | "Europe"
-        | "Oceania"
-        | "North America"
-        | "South America"
+      [_ in never]: never
     }
     CompositeTypes: {
       [_ in never]: never
@@ -500,4 +296,19 @@ export type Enums<
   ? Database[PublicEnumNameOrOptions["schema"]]["Enums"][EnumName]
   : PublicEnumNameOrOptions extends keyof PublicSchema["Enums"]
     ? PublicSchema["Enums"][PublicEnumNameOrOptions]
+    : never
+
+export type CompositeTypes<
+  PublicCompositeTypeNameOrOptions extends
+    | keyof PublicSchema["CompositeTypes"]
+    | { schema: keyof Database },
+  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
+    schema: keyof Database
+  }
+    ? keyof Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    : never = never,
+> = PublicCompositeTypeNameOrOptions extends { schema: keyof Database }
+  ? Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
+  : PublicCompositeTypeNameOrOptions extends keyof PublicSchema["CompositeTypes"]
+    ? PublicSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
     : never

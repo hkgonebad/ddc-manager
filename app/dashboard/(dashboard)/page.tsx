@@ -25,19 +25,19 @@ export const metadata: Metadata = {
   description: "Dashboard for DDC Manager",
 }
 
-async function checkUserSession() {
-  const {
-    data: { session },
-    error,
-  } = await readUserSession()
+// async function checkUserSession() {
+//   const {
+//     data: { session },
+//     error,
+//   } = await readUserSession()
 
-  if (!session) {
-    redirect("/auth")
-  }
-}
+//   if (!session) {
+//     redirect("/auth")
+//   }
+// }
 
 export default async function DashboardPage() {
-  await checkUserSession()
+  // await checkUserSession()
 
   return (
     <>

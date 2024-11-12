@@ -9,7 +9,7 @@ import AuthForm from "@/app/auth/components/AuthForm"
 
 export const metadata: Metadata = {
   title: "Onboarding",
-  description: "Onyx new customer onboarding",
+  description: "Create an account to get started with DDC Manager",
 }
 
 export default function OnboardingPage() {

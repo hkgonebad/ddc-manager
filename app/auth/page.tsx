@@ -14,7 +14,7 @@ export default async function page() {
   const { data: userSession } = await readUserSession()
 
   if (userSession.session) {
-    return redirect("/dashboard")
+    return redirect("/projects")
   }
 
   return (

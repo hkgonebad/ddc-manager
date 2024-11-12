@@ -39,9 +39,9 @@ export function UserNav() {
       if (user) {
         // Fetch user data from the 'users' table
         const { data: userData, error: userError } = await supabase
-          .from("users")
+          .from("employees")
           .select("name, email")
-          .eq("auth_user_id", user.id) // Match the UUID with auth_user_id
+          .eq("id", user.id) // Match the UUID with auth_user_id
           .single() // Get a single user
 
         if (userError) {

@@ -1,19 +1,20 @@
 "use client"
 
 import * as React from "react"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { AuthTokenResponse } from "@supabase/supabase-js"
+import { useForm } from "react-hook-form"
+import { AiOutlineLoading3Quarters } from "react-icons/ai"
+import { z } from "zod"
 
 import { cn } from "@/lib/utils"
-import { Icons } from "@/components/icons"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { loginWithEmailAndPassword, signInWithGithub } from "../actions"
 import { toast } from "@/components/ui/use-toast"
-import { AuthTokenResponse } from "@supabase/supabase-js"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import { AiOutlineLoading3Quarters } from "react-icons/ai"
+import { Icons } from "@/components/icons"
+
+import { loginWithEmailAndPassword } from "../actions"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -21,41 +22,40 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const LoginSchema = z.object({
     email: z.string().email(),
     password: z.string().min(1, { message: "Password can not be empty" }),
-  });
-  
+  })
+
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
-  const [isPending, startTransition] = React.useTransition();
-  
+  const [isPending, startTransition] = React.useTransition()
+
   const form = useForm<z.infer<typeof LoginSchema>>({
-		resolver: zodResolver(LoginSchema),
-		defaultValues: {
-			email: "",
-			password: "",
-		},
-	});
+    resolver: zodResolver(LoginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  })
   async function onSubmit(data: z.infer<typeof LoginSchema>) {
-    
     setIsLoading(true)
     startTransition(async () => {
-			const { error } = JSON.parse(
-				await loginWithEmailAndPassword(data)
-			) as AuthTokenResponse;
+      const { error } = JSON.parse(
+        await loginWithEmailAndPassword(data)
+      ) as AuthTokenResponse
 
-			if (error) {
-				toast({
-					title: "Login failed!",
-					description: (
-						<pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-							<code className="text-white">{error.message}</code>
-						</pre>
-					),
-				});
-			} else {
-				toast({
-					title: "Successful login 🎉",
-				});
-			}
-		});
+      if (error) {
+        toast({
+          title: "Login failed!",
+          description: (
+            <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+              <code className="text-white">{error.message}</code>
+            </pre>
+          ),
+        })
+      } else {
+        toast({
+          title: "Successful login 🎉",
+        })
+      }
+    })
     setTimeout(() => {
       setIsLoading(false)
     }, 3000)
@@ -79,15 +79,12 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               disabled={isLoading}
             />
           </div>
-          <Button
-				className="w-full flex items-center gap-2"
-				variant="outline"
-			>
-				Sign In{" "}
-				<AiOutlineLoading3Quarters
-					className={cn(" animate-spin", { hidden: !isPending })}
-				/>
-        </Button>
+          <Button className="w-full flex items-center gap-2" variant="outline">
+            Sign In{" "}
+            <AiOutlineLoading3Quarters
+              className={cn(" animate-spin", { hidden: !isPending })}
+            />
+          </Button>
         </div>
       </form>
       <div className="relative">

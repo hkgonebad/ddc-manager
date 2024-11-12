@@ -26,7 +26,7 @@ export default function ListOfMembers() {
   useEffect(() => {
     const fetchMembers = async () => {
       const { data, error } = await supabase
-        .from("users")
+        .from("employees")
         .select("name, role, created_at, status") // Adjust fields as per your table
 
       if (error) {
