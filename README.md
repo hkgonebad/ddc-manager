@@ -1,85 +1,74 @@
-<a href="https://onyx-rho-pink.vercel.app/">
-  <img alt="Onyx open graph image." src="https://quantumone.b-cdn.net/onyx-git/og-image.jpg">
-  <h1 align="center">Onyx MVP Template</h1>
-</a>
+# DDC Project Manager
 
-<a href="https://securityheaders.com/">
-  <img alt="Onyx security score image." src="https://quantumone.b-cdn.net/onyx-git/onyx-security-score-ls.jpg">
-  <h2 align="center">Onyx SecurityHeaders.com Score</h2>
-</a>
+DDC Project Manager is a web application built with Next.js and Supabase, designed to help teams manage their projects efficiently. The application leverages the power of Onyx, a decentralized autonomous organization (DAO), to provide a transparent and democratic decision-making process.
 
+## Features
 
-### What is Onyx?
-- Onyx is a turnkey, full stack NextJS 14+ web app written in Typescript that includes role based access control (RBAC),
-complete Supabase SSR Auth and DB integration, Zod and YUP! validation, Tanstack React Query, Rust serverless function runtime and API, Markdown pages with ability to insert React components, React Hook form, and more. Fork, customize, and deploy on Vercel or elsewhere to have your MVP up and running in a few days or less. Stack details are below. 
+- **Project Management**: Create, update, and delete projects with ease.
+- **User Authentication**: Secure authentication using Supabase.
+- **Real-time Updates**: Keep track of project status and updates in real-time.
+- **Decentralized Governance**: Participate in the decision-making process through Onyx DAO.
+- **Export Data**: Export project data to Excel for offline use.
 
-### Stack and Features
-- NextJS 14 App Router in Typescript 
-- Supabase 
-  - SSR Auth with
-    - Fully configured email/password signup, login, oauth, PKCE and confirm routes 
-    - middleware 
-    - server actions
-    - typed Auth & DB clients
-    - readOnly userSession clients
-  - Postgres DB with CRUD functions configured
-    - User account and profile management configured 
-    - RBAC configured admin dashboard with data visualization, members administration and todo lists
-    - Contact form with toast, Zod validation, server side table insert  
-- TanStack React Query, Table, and Dev Tools
-  - Demo SSR with Supabase DB & cache helpers 
-- YUP! & Zod validation and schemas
-- Shadcn-UI, Radix-UI primitives, Tailwind CSS
-- Markdown pages with Next/MDX - create page.mdx and layout.tsx for each markdown page
-- Next-PWA
-- Next Compose Plugins  
-- React Hook Form
-- User profile at /account page
-- OpenAI playground UI
-- Onboarding, signIn/signUp pages
-- Podcast UI
-- CookieButton component configured to work with Consent Manager from Termly free plan. Just create a free Termly account, add your Script tag on the app/layout page using Next Script and then add your CookieButton to your app/layout just above the ThemeProvider and just below your termly Script tag.  
-- Custom Formik Components with MUI are not used in app but code is solid for use in a "MUI Base X TailwindCSS config". Onyx is NOT currently configured for MUI nor MUI Base X TailwindCSS. 
-- Lucide React Icons with many brand SVGs ready for your props 
-- More..
+## Getting Started
 
-### API 
-- [Rust runtime for Vercel Serverless Functions](https://github.com/vercel-community/rust)
+### Prerequisites
 
-### Getting started with Onyx:
-- First, configure your environment
-  - Create a file named .env.local in project root
-  - Create a Supabase account and add the following to your env file
-    - NEXT_PUBLIC_SUPABASE_KEY="Your supabase anon key"
-    - SUPABASE_JWT_SECRET="Your supabase JWT secret"
-    - NEXT_PUBLIC_SUPABASE_URL="Your supabase project URL"
-    - SUPABASE_SERVIC_ROLE_KEY="Your supabase service role key"
-  - Ensure your Supabase tables match the tables and types found in '@/lib/supabase'.
-  - Add authorized development and production URL's to Supabase URL config. 
-### Run  
-- Development server:
+- Node.js
+- npm or yarn
+- Supabase account
 
-```bash
-npm i && npm run dev
-# or
-yarn i && yarn run dev
-# or
-pnpm i && pnpm dev
-# or
-bun i && bun dev
-```
+### Installation
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Clone the repository:
 
+   ```sh
+   git clone https://github.com/your-username/ddc-project-manager.git
+   cd ddc-project-manager
+   ```
 
-### Deploy on Vercel
+2. Install dependencies:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Frmourey26%2Fonyx%2Ftree%2Fmain)
+   ```sh
+   npm install
+   # or
+   yarn install
+   ```
 
+3. Set up environment variables:
 
-### Reference/Credit
-- @chensokheng
+   Create a `.env.local` file in the root directory and add your Supabase credentials:
 
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+   ```
 
-### Tips/Support
-<a href="https://www.buymeacoffee.com/rmoureyjr" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="51" width="217"></a>
+4. Run the development server:
+
+   ```sh
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+   Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Usage
+
+- **Authentication**: Sign in to access your projects.
+- **Project Management**: Use the dashboard to manage your projects.
+- **Governance**: Participate in the Onyx DAO for project-related decisions.
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+## Acknowledgements
+
+- [Next.js](https://nextjs.org/)
+- [Supabase](https://supabase.com/)

@@ -17,6 +17,8 @@ export default function EditMember() {
         </Button>
       }
       form={<EditForm />}
+      isOpen={true}
+      onOpen={(open: boolean) => {}}
     />
   )
 }
