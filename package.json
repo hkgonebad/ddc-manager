@@ -1,9 +1,9 @@
 {
-  "name": "onyx",
-  "version": "0.1.0",
+  "name": "ddc-manager",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -64,8 +64,8 @@
     "graphql-request": "^6.1.0",
     "js-cookie": "^3.0.5",
     "lodash": "^4.17.21",
-    "lucide-react": "0.105.0-alpha.4",
-    "next": "^14.2.16",
+    "lucide-react": "^0.456.0",
+    "next": "^15.0.3",
     "next-compose-plugins": "^2.2.1",
     "next-themes": "^0.2.1",
     "pdf-lib": "^1.17.1",
@@ -92,7 +92,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
     "@types/eslint": "^8.44.8",
     "@types/lodash": "^4.14.202",
     "@types/node": "^20.14.15",

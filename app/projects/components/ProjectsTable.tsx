@@ -94,27 +94,6 @@ export function ProjectsTable({ projects, fetchProjects }: ProjectsTableProps) {
     },
   })
 
-  // Filter projects based on the selected date range only if explicitly changed
-  // useEffect(() => {
-  //   if (dateRange?.from && dateRange?.to) {
-  //     setFilteredProjects(
-  //       projects.filter((project) => {
-  //         const projectDate = new Date(project.start_date || "")
-  //         return (
-  //           dateRange.from &&
-  //           dateRange.to &&
-  //           isWithinInterval(projectDate, {
-  //             start: dateRange.from,
-  //             end: dateRange.to,
-  //           })
-  //         )
-  //       })
-  //     )
-  //   } else {
-  //     setFilteredProjects(projects) // Show all projects if no date range is selected
-  //   }
-  // }, [dateRange, projects])
-
   return (
     <div className="w-full">
       <div className="flex items-center py-4">
@@ -157,7 +136,7 @@ export function ProjectsTable({ projects, fetchProjects }: ProjectsTableProps) {
           <AiFillFilePdf />
         </Button>
       </div>
-      <div className="rounded-md border">
+      <div className="rounded-md border bg-white dark:bg-inherit">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

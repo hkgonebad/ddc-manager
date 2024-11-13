@@ -20,7 +20,7 @@ interface CalendarDateRangePickerProps {
 }
 
 export function CalendarDateRangePicker({
-  onSelect,
+  onSelect = () => {},
   defaultDateRange,
 }: CalendarDateRangePickerProps) {
   // const today = new Date() // Get today's date
