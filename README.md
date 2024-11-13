@@ -1,14 +1,13 @@
 # DDC Project Manager
 
-DDC Project Manager is a web application built with Next.js and Supabase, designed to help teams manage their projects efficiently. The application leverages the power of Onyx, a decentralized autonomous organization (DAO), to provide a transparent and democratic decision-making process.
+DDC Project Manager is a web application built with Next.js and Supabase, designed to help teams manage their projects efficiently. The application leverages the power of Onyx, a Next.js Supabase framework from GitHub.
 
 ## Features
 
 - **Project Management**: Create, update, and delete projects with ease.
 - **User Authentication**: Secure authentication using Supabase.
 - **Real-time Updates**: Keep track of project status and updates in real-time.
-- **Decentralized Governance**: Participate in the decision-making process through Onyx DAO.
-- **Export Data**: Export project data to Excel for offline use.
+- **Export Data**: Export project data to Excel for reports.
 
 ## Getting Started
 
@@ -23,7 +22,7 @@ DDC Project Manager is a web application built with Next.js and Supabase, design
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/your-username/ddc-project-manager.git
+   git clone https://github.com/hkgonebad/ddc-project-manager.git
    cd ddc-project-manager
    ```
 
@@ -58,7 +57,6 @@ DDC Project Manager is a web application built with Next.js and Supabase, design
 
 - **Authentication**: Sign in to access your projects.
 - **Project Management**: Use the dashboard to manage your projects.
-- **Governance**: Participate in the Onyx DAO for project-related decisions.
 
 ## Contributing
 
@@ -72,3 +70,4 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 - [Next.js](https://nextjs.org/)
 - [Supabase](https://supabase.com/)
+- [Onyx](https://github.com/rmourey26/onyx)
